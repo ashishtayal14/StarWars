@@ -11,6 +11,26 @@
     margin-bottom : 70px;
 }
 
+.onTop{
+    z-index: 9999;
+}
+
+.centerScreen{
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    width:35em;
+    height:24em;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -15em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+}
+
+.planet:hover{
+    cursor: pointer;
+}
+
 .planet:before {
     content: "";
     position: absolute;
@@ -48,6 +68,23 @@
     margin-left: 50px;
     margin-bottom: 90px;
     height: 200px;
+}
+
+.planetDetail{
+    opacity: 0.9;
+    background: khaki;
+}
+
+.planetDetail .container{
+    text-align: center;
+    border-radius: 20px;
+    background: #311900;
+    color:yellow;
+}
+
+.planetDetail .container .list-group-item{
+    opacity: 1;
+    background: #6d3701;
 }
 
 .planet .shadow {

@@ -1,9 +1,9 @@
 {
   "bundle.css": "style.css",
   "bundle.css.map": "style.css.map",
-  "bundle.js": "bundle.ea6c78f13cfe1894bea0.js",
+  "bundle.js": "bundle.369c48954814599169cd.js",
   "loadingplanet.gif": "a9a50280ab951e75c0e10b9b72cde763.gif",
-  "meta.js": "meta.ea6c78f13cfe1894bea0.js",
+  "meta.js": "meta.369c48954814599169cd.js",
   "planet.jpg": "7d02d1b54679a6584346c77c547fd741.jpg",
-  "vendor.js": "vendor.ea6c78f13cfe1894bea0.js"
+  "vendor.js": "vendor.369c48954814599169cd.js"
 }
