@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { Throttle } from 'react-throttle';
+import {SEARCH_LIMIT_EXCEEDED,SEARCH_LIMIT_FOR_GUEST,MILISECONDS_TO_REFRESH_SEARCH} from '../../constants/constants';
 
 class InputSearch extends React.Component {
     constructor(props) {
@@ -13,23 +14,27 @@ class InputSearch extends React.Component {
         return (
             <div className='form-inline'>
             <div className='form-group'>
-                <input type='text' placeholder="Search" className='form-control margin-left' value={ this.props.searchKey } disabled = { this.props.totalHits > 14  && this.props.isGuestUser } onChange={ (e) => this.props.setSearchKey(e.target.value) }/> 
-                <input type='text' placeholder="Filter By Name" className='form-control margin-left' value={ this.props.filterKey } disabled = { this.props.totalHits > 14  && this.props.isGuestUser } onChange={ (e) => { this.props.filterPlanetSearch(e.target.value); }}/>
-                {this.props.totalHits > 14  && this.props.isGuestUser && <label className="error">Search limit exceded. Please wait for a minute</label>}
+                <input type='text' placeholder="Search" className='form-control margin-left' value={ this.props.searchKey } disabled = { this.props.totalHits > SEARCH_LIMIT_FOR_GUEST  && this.props.isGuestUser } onChange={ (e) => this.props.setSearchKey(e.target.value) }/> 
+                <input type='text' placeholder="Filter By Name" className='form-control margin-left' value={ this.props.filterKey } disabled = { this.props.totalHits > SEARCH_LIMIT_FOR_GUEST && this.props.isGuestUser } onChange={ (e) => { this.props.filterPlanetSearch(e.target.value); }}/>
+                {this.props.totalHits > 14  && this.props.isGuestUser && <label className="error">{SEARCH_LIMIT_EXCEEDED}</label>}
             </div>
             </div>
         );
     }
-    componentDidMount(){        
+    componentDidMount(){   
+             
         if(this.props.isGuestUser){
-            this.clearSearchHitsTimer = setTimeout(()=>{
+            console.log("component will mount search");
+            this.clearSearchHitsTimer = setInterval(()=>{
+                console.log("setTimeout invoked");
                 this.props.clearSearchHits();
-            },60000);
+            },MILISECONDS_TO_REFRESH_SEARCH);
         }
     }
     componentWillUnmount(){
+        console.log("component will unmount invoked");
         if(this.clearSearchHitsTimer)
-            clearTimeout(this.clearSearchHitsTimer);
+            clearInterval(this.clearSearchHitsTimer);
     }
 }
 

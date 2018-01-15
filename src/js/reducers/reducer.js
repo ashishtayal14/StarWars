@@ -96,7 +96,7 @@ export const search = (state = { filterKey: '', searchKey: '', totalHits:0 }, ac
             )
         case actionTypes.CLEAR_SEARCH_HITS:
             return Object.assign({}, state, {
-                totalHits: clearSearchHits(),
+                totalHits: 0,
             }
             )
         case actionTypes.SET_SEARCH_HITS:

@@ -19,7 +19,9 @@ export const HEADER ='TECHIE DETAILS'
 export const API_URL ='https://swapi.co/api/planets'
 export const LOGIN_URL =  'https://swapi.co/api/people'
 export const TRY_AGAIN ='Please try again.'
-export const SEARCH_LIMIT_EXCEEDED = "Search Limit Exceeded ! You can search upto 15 times only"
+export const SEARCH_LIMIT_EXCEEDED = "Search Limit Exceeded ! Please try again in a minute"
+export const SEARCH_LIMIT_FOR_GUEST = 5
+export const MILISECONDS_TO_REFRESH_SEARCH = 60000;
 export const DATA_FOUND ='No Data Found! Please Search Again.'
 export const LOADER_OPTIONS ={
     lines: 13,
