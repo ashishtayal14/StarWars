@@ -43,5 +43,5 @@ export const LOADER_OPTIONS ={
     shadow: false,
     hwaccel: true,
 };
-export const COPY_RIGHT = 'Copyright © 2014-2017 UNDERSTOOD.ORG USA LLC. All rights reserved. “Understood” and related logos are trademarks of UNDERSTOOD.ORG'
+export const COPY_RIGHT = 'Copyright © 2018 All rights reserved by Xebia.com'
 
