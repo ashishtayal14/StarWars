@@ -6,42 +6,40 @@ import { LOADER_OPTIONS } from '../../constants/constants'
 import Loader from '../common/loader';
 import PropTypes from 'prop-types'
 import _ from 'lodash'
+import {throttle,debounce} from 'throttle-debounce';
 
 export default class Home extends React.PureComponent {
 
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
-            hasError: false,
-            isGuestUser: false
+            isGuestUser: true
         }
-        this.setSearchKey = this.setSearchKey.bind(this)
-        this.filterPlanetSearch = this.filterPlanetSearch.bind(this);
-        if (!window.localStorage.getItem("status")) {
-            this.props.history.push('/');
-        }
-        console.log(this.props);
+        this.setSearchKey = this.setSearchKey.bind(this);
+        this.searchPlanet = debounce(500,this.searchPlanet);
+        this.filterPlanetSearch = this.filterPlanetSearch.bind(this);        
     }
     componentDidMount() {
-        const status = JSON.parse(window.localStorage.getItem('status'))
-
+        const status = JSON.parse(window.localStorage.getItem('status'))        
         if (status == "login successfully") {
             const user = JSON.parse(window.localStorage.getItem('username'))
-            const isGuestUser = user ? user.toLowerCase() !== "luke skywalker" : ""
-            this.setState({ isGuestUser: isGuestUser })
+            const isGuestUser = user.toLowerCase() !== "luke skywalker" ? true : false
+            this.setState({ isGuestUser: isGuestUser });
         }
         this.props.actions.getDataRequest();
         this.props.actions.clearSearchKey();
+    }    
+
+    setSearchKey(key) {        
+        this.props.actions.setSearchKey(key);
+        this.searchPlanet(key);
     }
 
-    showDetail(e) {
-        console.log(e.target);
+    searchPlanet(key){
+        let totalHits = this.props.totalHits;
+        this.props.actions.getFilteredDataRequest({key,totalHits});
     }
 
-    setSearchKey(key) {
-        this.props.actions.setSearchKey(key)
-        this.props.actions.getFilteredDataRequest(key)
-    }
     filterPlanetSearch(filterText) {
         this.props.actions.setFilterKey(filterText);
         this.props.actions.filterPlanetSearch(filterText);
@@ -50,7 +48,7 @@ export default class Home extends React.PureComponent {
 
         return (
             <div>                
-                <PlanetList data={this.props} showDetail={ this.showDetail.bind(this) } filterPlanetSearch={this.filterPlanetSearch} setSearchKey={this.setSearchKey} isGuestUser={this.state.isGuestUser} />
+                <PlanetList data={this.props} filterPlanetSearch={this.filterPlanetSearch} setSearchKey={this.setSearchKey} isGuestUser={this.state.isGuestUser} />
             </div>
         )
 
@@ -67,8 +65,7 @@ const PlanetList = (props) => {
         filteredPlanets,
         searchKey,
         filterKey,
-        totalHits,
-        showDetail
+        totalHits
         } = props.data
     const { setSearchKey, isGuestUser, filterPlanetSearch } = props
     const searchedPlanets = filterKey.length > 0 ? filteredPlanets : planets
@@ -76,14 +73,14 @@ const PlanetList = (props) => {
         <div className='component-block'>
             {isFetching && <Loader />}
 
-            <InputSearch setSearchKey={setSearchKey} filterPlanetSearch={filterPlanetSearch} searchKey={searchKey} filterKey={filterKey} clearSearchKey={actions.clearSearchKey} totalHits={totalHits} isGuestUser={isGuestUser} />
+            <InputSearch setSearchKey={setSearchKey} filterPlanetSearch={filterPlanetSearch} searchKey={searchKey} filterKey={filterKey} clearSearchKey={actions.clearSearchKey} clearSearchHits={actions.clearSearchHits} totalHits={totalHits} isGuestUser={isGuestUser} />
 
             {searchedPlanets && searchedPlanets.length > 0 && (
                 <div className='col-md-12 alignGrid'>
 
                     {
                         _.map(searchedPlanets, (planet) => (
-                            <Planet key={planet.name} planet={planet} showDetail={showDetail}/>
+                            <Planet key={planet.name} planet={planet}/>
                         ))
                     }
                 </div>

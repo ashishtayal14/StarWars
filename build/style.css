@@ -6756,6 +6756,19 @@ button.close {
   margin-left: 50px;
   margin-bottom: 70px;
 }
+.planet .planetName {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.planet.small {
+  font-size: 15px;
+}
+.planet.large {
+  font-size: 20px;
+}
+.planet.normal {
+  font-size: 25px;
+}
 .onTop {
   z-index: 9999;
 }

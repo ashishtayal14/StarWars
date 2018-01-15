@@ -4,7 +4,6 @@ import Login from '../components/login/login'
 import { bindActionCreators } from 'redux'
 
 const mapStateToProps = (state, props) => {
-    console.log("people in login",state.planets.people)
          return {
             isFetching:state.planets.isFetching,
             errorMessage:state.planets.errorMessage,

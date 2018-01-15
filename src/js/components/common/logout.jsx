@@ -6,8 +6,7 @@ class Logout extends React.Component {
         this.state = {};
         this.Logout = this.Logout.bind(this);
     }
-    Logout() {
-        console.log(this.props);
+    Logout() {        
         window.localStorage.removeItem("status");
         window.location.href = "/";
     }

@@ -26,8 +26,7 @@ export const getFilteredData = (id) => (
         fetch(API_URL+'/?search='+id)
         .then((response) => response.json())
         .then((res) => {
-            const planets = res.results
-            console.log("in api id and planets",planets.length,id)
+            const planets = res.results            
             resolve(planets)
         })
         .catch((error) => {

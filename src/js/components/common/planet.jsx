@@ -24,11 +24,13 @@ class Planet extends React.Component {
             orbital_period,
             diameter
             } = this.props.planet
+        let planetPopulationClass = population ? population > "50000" ? "large" : "small" : "normal";
+        planetPopulationClass = "col-md-10 planet " + planetPopulationClass;
         return (
             <div>
-                <div className="col-md-10 planet" onClick={this.showDetail}>
-                    <div>
-                        <h3><strong>{name}</strong></h3>
+                <div className={planetPopulationClass} onClick={this.showDetail}>
+                    <div className="planetName">
+                        <span><strong>{name}</strong></span>
                     </div>
                     <span className="shadow"></span>                    
                 </div>

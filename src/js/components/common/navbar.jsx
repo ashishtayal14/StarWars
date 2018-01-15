@@ -18,9 +18,16 @@ const NavBar = () => {
         <img src="../assets/images/star-wars.png" />
         <section className='topbar'>
             <ul  className='topnav nav-right'>
+                {window.location.pathname != "/home" && 
                 <li>
-                    <a>ABOUT</a>
+                    <Link to='/home'>HOME</Link>
                 </li>
+                }
+                {   !window.localStorage.getItem("status") && window.location.pathname != "/" &&
+                    <li>
+                        <Link to='/'>LOGIN</Link>
+                    </li>
+                }
                 <Logout/>
             </ul>
         </section>

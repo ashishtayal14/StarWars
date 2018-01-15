@@ -1,4 +1,5 @@
 import * as actionTypes from '../constants/constants.js'
+import {clearSearchHits} from '../utils/utils';
 
 export const planets = (state = { planets: [],filteredPlanets:[],people:null, isFetching: false, errorMessage: '' }, action) => {
     switch (action.type) {
@@ -95,7 +96,7 @@ export const search = (state = { filterKey: '', searchKey: '', totalHits:0 }, ac
             )
         case actionTypes.CLEAR_SEARCH_HITS:
             return Object.assign({}, state, {
-                totalHits: 0,
+                totalHits: clearSearchHits(),
             }
             )
         case actionTypes.SET_SEARCH_HITS:

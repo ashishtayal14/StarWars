@@ -17,11 +17,9 @@ export function* fetchData() {
 
 export function* fetchFilteredData(action) {
   try {
-  
-    const data = yield call(getFilteredData, action.id)
+    const data = yield call(getFilteredData, action.filterObj.key)
     yield put(actions.getFilteredDataSuccess(data))
-    let totalHits = JSON.parse(window.localStorage.getItem('totalHits'))
-    window.localStorage.setItem('totalHits', JSON.stringify(totalHits+1))
+    let totalHits = action.filterObj.totalHits;
     yield put(actions.setSearchHits( totalHits + 1)) 
   } catch (error) {
     yield put(actions.getFilteredDataFailure(error.message))
