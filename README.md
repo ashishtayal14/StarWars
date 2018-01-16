@@ -14,10 +14,11 @@ https://starwarsxebia.herokuapp.com
 Description:
 This is an application for searching and finding different planets in this universe.
 It contains 2 pages : 
-Login :
-    username:Luke Skywalker
-    password:19BBY
-HOME: 
+
+1) Login :
+    a)username:Luke Skywalker
+    b)password:19BBY
+2) HOME: 
     It provides list of planets.
     You can search and filter different planets.
 
