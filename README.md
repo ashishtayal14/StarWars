@@ -7,7 +7,8 @@ Steps to run on Local
 4) Run "npm i"
 5) Run "npm start"
 
-Public Url 
+Public Url :
+https://starwarsxebia.herokuapp.com
 
 
 Description:
