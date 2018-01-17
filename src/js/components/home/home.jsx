@@ -15,6 +15,7 @@ export default class Home extends React.PureComponent {
         this.state = {
             isGuestUser: true
         }
+        console.log(this.props);
         this.setSearchKey = this.setSearchKey.bind(this);
         this.searchPlanet = debounce(500,this.searchPlanet);
         this.filterPlanetSearch = this.filterPlanetSearch.bind(this);        

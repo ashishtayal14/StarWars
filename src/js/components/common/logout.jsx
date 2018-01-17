@@ -1,21 +1,17 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom'
 
-class Logout extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-        this.Logout = this.Logout.bind(this);
-    }
-    Logout() {        
-        window.localStorage.removeItem("status");
-        window.location.href = "/";
-    }
-    render() {
-        return (window.localStorage.getItem("status") &&
-                <li><a onClick={this.Logout}>LOG OUT</a>
-                </li>
-        );
-    }
+const Logout = withRouter(({history}) => {
+    return (
+        window.localStorage.getItem("status") &&
+        <li><a onClick={() => { 
+            window.localStorage.removeItem("status");
+            window.localStorage.removeItem("username");
+            history.push("/");
+        }}>LOG OUT</a>
+        </li>
+    );
 }
+);
 
 export default Logout;

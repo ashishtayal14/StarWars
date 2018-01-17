@@ -18,22 +18,22 @@ const store = createStore(techinfomasterReducer, applyMiddleware(sagaMiddleware)
 sagaMiddleware.run(rootSaga);
 const App = () => (
   <Provider store={store}>
-    <div>
-      <Header />
-      <div className='row'>
-        <div className='col-md-12'>
-          <main>
-            <Routes />
-          </main>
+    <Router history={browserHistory}>
+      <div>
+        <Header/>
+        <div className='row'>
+          <div className='col-md-12'>
+            <main>
+              <Routes />
+            </main>
+          </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </Router>
   </Provider>
 )
 ReactDOM.render(
-  <Router history={browserHistory}>
-    <App />
-  </Router>
+  <App />
   , document.getElementById('container')
 )

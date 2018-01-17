@@ -10,8 +10,7 @@ const NavBar = () => {
     })
     const searchClass =  classNames({
       'active': location.pathname.match(/^\/search/),
-    })
-  
+    })    
     return (
 
     <div className='topnav'>
