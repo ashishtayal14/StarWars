@@ -37,20 +37,11 @@ export function* checkLoginData(action) {
 }
 
 //backgroundTask
+
 export function* watchAndLog() {
   while (true) {
-    yield take('*')
-    yield select()
-  }
-}
-
-export function* watchStartBackgroundTask() {
-  while (true) {
-    yield take('*')
-    yield race({
-      task: call(watchAndLog),
-      cancel: take('CANCEL_TASK'),
-    })
+    const action = yield take('*')
+    const state = yield select()
   }
 }
 
@@ -61,5 +52,5 @@ export function* watchFetchAsync() {
 }
 
 export function* rootSaga() {
-  yield all([watchFetchAsync(), watchStartBackgroundTask()])
+  yield all([watchFetchAsync(), watchAndLog()])
 }
