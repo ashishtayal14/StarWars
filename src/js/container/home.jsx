@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import Home from '../components/home/home'
 import { bindActionCreators } from 'redux'
 
-const mapStateToProps = (state, props) => {  
-        // console.log(props);      
+const mapStateToProps = (state, props) => {              
          return {
             planets:state.planets.planets,
             filteredPlanets:state.planets.filteredPlanets,

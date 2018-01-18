@@ -6,7 +6,7 @@ import _ from 'lodash'
 import { throttle } from 'throttle-debounce';
 
 class Login extends React.PureComponent {
-    constructor(props) {
+    constructor(props) {        
         super(props);       
         this.onAuthorize = this.onAuthorize.bind(this);
         this.showAlert = this.showAlert.bind(this);
