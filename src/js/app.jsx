@@ -16,7 +16,7 @@ import { API_URL } from './constants/constants'
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(techinfomasterReducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootSaga);
-const App = () => (
+const App = () => (  
   <Provider store={store}>
     <Router history={browserHistory}>
       <div>

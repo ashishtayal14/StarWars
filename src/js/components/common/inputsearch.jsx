@@ -23,16 +23,13 @@ class InputSearch extends React.Component {
     }
     componentDidMount(){   
              
-        if(this.props.isGuestUser){
-            console.log("component will mount search");
-            this.clearSearchHitsTimer = setInterval(()=>{
-                console.log("setTimeout invoked");
+        if(this.props.isGuestUser){            
+            this.clearSearchHitsTimer = setInterval(()=>{                
                 this.props.clearSearchHits();
             },MILISECONDS_TO_REFRESH_SEARCH);
         }
     }
-    componentWillUnmount(){
-        console.log("component will unmount invoked");
+    componentWillUnmount(){        
         if(this.clearSearchHitsTimer)
             clearInterval(this.clearSearchHitsTimer);
     }
